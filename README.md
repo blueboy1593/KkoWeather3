@@ -3,7 +3,7 @@
 ## 주요 기능
 
 ### 오늘과 비교하는 내일의 날씨
-![Screenshot_20221023-011011_ ](https://user-images.githubusercontent.com/52685277/197350352-4baf9427-3193-4d5c-8f89-63f0d5ddeeff.jpg)
+![Screenshot_20221023-011011_ ](https://user-images.githubusercontent.com/52685277/197350352-4baf9427-3193-4d5c-8f89-63f0d5ddeeff.jpg){: width="100" height="100"}
 ![Screenshot_20221023-011043_ ](https://user-images.githubusercontent.com/52685277/197350357-04b88482-0a45-4f10-af5a-9b2b8a6b32c0.jpg)
 ![Screenshot_20221023-010755_ ](https://user-images.githubusercontent.com/52685277/197350359-2d565674-839a-441e-9aad-b63593fdb30d.jpg)
 Normal : 오늘과 내일의 온도차가 1도 이하
