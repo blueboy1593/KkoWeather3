@@ -14,13 +14,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.kko.weather.domain.weather.WeatherData
+import com.kko.weather.presentation.ui.theme.Orange
 import java.time.format.DateTimeFormatter
 
 @Composable
 fun HourlyWeatherDisplay(
     weatherData: WeatherData,
     modifier: Modifier = Modifier,
-    textColor: Color = Color.White
+    textColor: Color = Orange
 ) {
     val formattedTime = remember(weatherData) {
         weatherData.time.format(

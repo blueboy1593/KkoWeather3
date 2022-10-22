@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kko.weather.domain.weather.WeatherData
+import com.kko.weather.presentation.ui.theme.Orange
 
 @Composable
 fun WeatherForecast(
@@ -25,7 +26,7 @@ fun WeatherForecast(
         Text(
             text = dayText,
             fontSize = 20.sp,
-            color = Color.White
+            color = Orange
         )
         Spacer(modifier = Modifier.height(16.dp))
         LazyRow(content = {

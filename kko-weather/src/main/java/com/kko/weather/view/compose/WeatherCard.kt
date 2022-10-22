@@ -47,25 +47,23 @@ fun WeatherCard(
                     modifier = Modifier.align(Alignment.End),
                     color = Color.White
                 )
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(8.dp))
                 Image(
                     painter = painterResource(id = weatherData.weatherType.iconRes),
                     contentDescription = null,
-                    modifier = Modifier.width(200.dp)
+                    modifier = Modifier.width(160.dp)
                 )
-                Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = "${weatherData.temperatureCelsius}ºC",
-                    fontSize = 50.sp,
+                    fontSize = 32.sp,
                     color = Color.White
                 )
-                Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = weatherData.weatherType.weatherDesc,
                     fontSize = 20.sp,
                     color = Color.White
                 )
-                Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(12.dp))
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceAround

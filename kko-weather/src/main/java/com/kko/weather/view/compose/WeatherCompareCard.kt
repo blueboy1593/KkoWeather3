@@ -9,16 +9,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kko.weather.R
 import com.kko.weather.presentation.WeatherState
-import java.time.format.DateTimeFormatter
-import kotlin.math.roundToInt
+import kotlin.math.abs
+import kotlin.math.round
+
+enum class CompareCondition {
+    NORMAL,
+    HOT,
+    COLD
+}
 
 @Composable
 fun WeatherCompareCard(
@@ -26,7 +29,37 @@ fun WeatherCompareCard(
     backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
-    state.weatherInfo?.currentWeatherData?.let { weatherData ->
+    state.weatherInfo?.weatherDataPerDay?.let { weatherDataPerDay ->
+        val todayWeatherData = weatherDataPerDay[0]
+        val tomorrowWeatherData = weatherDataPerDay[1]
+        val todayTemperatureSum = todayWeatherData?.fold(0.0) { total, weatherData ->
+            total + weatherData.temperatureCelsius
+        }
+        val todayTemperatureAvarage = round(todayTemperatureSum?.div(todayWeatherData.size)!! * 100) / 100
+        val tomorrowTemperatureSum = tomorrowWeatherData?.fold(0.0) { total, weatherData ->
+            total + weatherData.temperatureCelsius
+        }
+        val tomorrowTemperatureAvarage = round(tomorrowTemperatureSum?.div(tomorrowWeatherData.size)!! * 100) / 100
+        val tomorrowMinusToday = tomorrowTemperatureAvarage - todayTemperatureAvarage
+
+        val compareCondition: CompareCondition
+        val painterResource: Int
+        if (abs(tomorrowMinusToday) < 1) {
+            compareCondition = CompareCondition.NORMAL
+            painterResource = R.drawable.sun_normal
+        } else if (tomorrowMinusToday > 0) {
+            compareCondition = CompareCondition.HOT
+            painterResource = R.drawable.sun_hot
+        } else {
+            compareCondition = CompareCondition.COLD
+            painterResource = R.drawable.sun_cold
+        }
+        val compareConditionText = when (compareCondition) {
+            CompareCondition.NORMAL -> "오늘과 내일은 비슷해요~"
+            CompareCondition.HOT -> "오늘보다 내일 더워요!! ;;"
+            CompareCondition.COLD -> "오늘보다 내일 추워요 ㅠㅠ"
+        }
+
         Card (
             backgroundColor = backgroundColor,
             shape = RoundedCornerShape(10.dp),
@@ -39,59 +72,27 @@ fun WeatherCompareCard(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "현재 날씨 ${
-                        weatherData.time.format(
-                            DateTimeFormatter.ofPattern("HH:mm")
-                        )
-                    }",
-                    modifier = Modifier.align(Alignment.End),
+                    text = "내일 우리는?",
+                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                    fontSize = 28.sp,
                     color = Color.White
                 )
-                Spacer(modifier = Modifier.height(16.dp))
                 Image(
-                    painter = painterResource(id = weatherData.weatherType.iconRes),
+                    painter = painterResource(painterResource),
                     contentDescription = null,
-                    modifier = Modifier.width(200.dp)
+                    modifier = Modifier.width(180.dp)
                 )
-                Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = "${weatherData.temperatureCelsius}ºC",
-                    fontSize = 50.sp,
+                    text = "오늘 평균 온도: ${todayTemperatureAvarage}ºC, 내일 평균 온도: ${tomorrowTemperatureAvarage}ºC",
+                    fontSize = 16.sp,
                     color = Color.White
                 )
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = weatherData.weatherType.weatherDesc,
+                    text = compareConditionText,
                     fontSize = 20.sp,
                     color = Color.White
                 )
-                Spacer(modifier = Modifier.height(32.dp))
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceAround
-                ) {
-                    WeatherDataDisplay(
-                        value = weatherData.pressure.roundToInt(),
-                        unit = "hpa",
-                        icon = ImageVector.vectorResource(id = R.drawable.ic_pressure),
-                        iconTint = Color.White,
-                        textStyle = TextStyle(color = Color.White)
-                    )
-                    WeatherDataDisplay(
-                        value = weatherData.humidity.roundToInt(),
-                        unit = "%",
-                        icon = ImageVector.vectorResource(id = R.drawable.ic_drop),
-                        iconTint = Color.White,
-                        textStyle = TextStyle(color = Color.White)
-                    )
-                    WeatherDataDisplay(
-                        value = weatherData.windSpeed.roundToInt(),
-                        unit = "km/h",
-                        icon = ImageVector.vectorResource(id = R.drawable.ic_wind),
-                        iconTint = Color.White,
-                        textStyle = TextStyle(color = Color.White)
-                    )
-                }
             }
         }
     }

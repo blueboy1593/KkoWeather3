@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.kko.weather.view.compose.WeatherCard
 import com.kko.weather.presentation.WeatherViewModel
 import com.kko.weather.presentation.ui.theme.*
+import com.kko.weather.view.compose.WeatherCompareCard
 import com.kko.weather.view.compose.WeatherForecast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -52,11 +53,14 @@ class MainActivity : ComponentActivity() {
                             .verticalScroll(rememberScrollState())
                             .background(Yellow)
                     ) {
+                        WeatherCompareCard(
+                            state = viewModel.state,
+                            backgroundColor = Orange
+                        )
                         WeatherCard(
                             state = viewModel.state,
                             backgroundColor = Orange
                         )
-                        Spacer(modifier = Modifier.height(16.dp))
                         viewModel.state.weatherInfo?.weatherDataPerDay?.get(1)?.let {
                             WeatherForecast(
                                 todayWeatherData = it,
