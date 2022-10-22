@@ -6,6 +6,7 @@
 ![kko_weather_1](https://user-images.githubusercontent.com/52685277/197352753-6204a2f9-24e4-4d96-bbbc-72d0d004bcfe.jpg)
 ![kko_weather_2](https://user-images.githubusercontent.com/52685277/197352755-510e37ef-c39c-454d-be34-54fdeb3aa0ec.jpg)
 ![kko_weather_3](https://user-images.githubusercontent.com/52685277/197352757-b196610f-fe98-4ec9-9505-6cf2475f2f65.jpg)
+
 Normal : 오늘과 내일의 온도차가 1도 이하
 Hot : 오늘보다 내일의 온도가 1도 이상 높음
 Cold : 오늘보다 내일의 온도가 1도 이상 낮음
@@ -13,6 +14,7 @@ Cold : 오늘보다 내일의 온도가 1도 이상 낮음
 
 ### 현재 날씨
 ![kko_weather_4](https://user-images.githubusercontent.com/52685277/197352768-f903a890-9996-4a74-8118-9568d694f27d.jpg)
+
 현재의 온도, 상태, 습도, 바람 등 표현
 
 ### 오늘과 내일의 시간별 날씨
