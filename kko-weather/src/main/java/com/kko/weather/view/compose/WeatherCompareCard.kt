@@ -1,4 +1,4 @@
-package com.kko.weather.presentation
+package com.kko.weather.view.compose
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -16,11 +16,12 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kko.weather.R
+import com.kko.weather.presentation.WeatherState
 import java.time.format.DateTimeFormatter
 import kotlin.math.roundToInt
 
 @Composable
-fun WeatherCard(
+fun WeatherCompareCard(
     state: WeatherState,
     backgroundColor: Color,
     modifier: Modifier = Modifier
@@ -38,7 +39,7 @@ fun WeatherCard(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Today ${
+                    text = "현재 날씨 ${
                         weatherData.time.format(
                             DateTimeFormatter.ofPattern("HH:mm")
                         )
@@ -54,7 +55,7 @@ fun WeatherCard(
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = "${weatherData.temperatureCelsius}ºC}",
+                    text = "${weatherData.temperatureCelsius}ºC",
                     fontSize = 50.sp,
                     color = Color.White
                 )

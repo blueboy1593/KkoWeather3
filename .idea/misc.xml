@@ -9,7 +9,21 @@
         <entry key="app/src/main/res/drawable/ic_sunnycloudy.xml" value="0.214" />
         <entry key="app/src/main/res/drawable/ic_thunder.xml" value="0.214" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.162" />
+        <entry key="kko-weather/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.158" />
+        <entry key="kko-weather/src/main/res/drawable/ic_cloudy.xml" value="0.158" />
+        <entry key="kko-weather/src/main/res/drawable/ic_drop.xml" value="0.158" />
+        <entry key="kko-weather/src/main/res/drawable/ic_heavysnow.xml" value="0.158" />
+        <entry key="kko-weather/src/main/res/drawable/ic_launcher_background.xml" value="0.158" />
         <entry key="kko-weather/src/main/res/drawable/ic_pressure.xml" value="0.1675" />
+        <entry key="kko-weather/src/main/res/drawable/ic_rainshower.xml" value="0.158" />
+        <entry key="kko-weather/src/main/res/drawable/ic_rainy.xml" value="0.158" />
+        <entry key="kko-weather/src/main/res/drawable/ic_snowy.xml" value="0.158" />
+        <entry key="kko-weather/src/main/res/drawable/ic_sunny.xml" value="0.158" />
+        <entry key="kko-weather/src/main/res/drawable/ic_sunnycloudy.xml" value="0.158" />
+        <entry key="kko-weather/src/main/res/drawable/ic_sunnyrainy.xml" value="0.158" />
+        <entry key="kko-weather/src/main/res/drawable/ic_wind.xml" value="0.158" />
+        <entry key="kko-weather/src/main/res/drawable/ic_windy.xml" value="0.158" />
+        <entry key="kko-weather/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1595" />
       </map>
     </option>
   </component>

@@ -1,4 +1,4 @@
-package com.kko.weather.presentation
+package com.kko.weather.view.compose
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
